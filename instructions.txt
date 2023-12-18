@@ -1,0 +1,9 @@
+live site url : https://test.manirul.xyz/
+
+super admin url : https://test.manirul.xyz/adminpanel
+Email : superadmin@gmail.com
+Passwd : 123456
+-----------------------------------------------------
+user login url : https://test.manirul.xyz/login
+email : khairul@gmail.com
+paswd : 123456
