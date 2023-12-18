@@ -31,31 +31,7 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <a class="nav-link menu-link" href="{{ route('dashboard') }}"  role="button">
                             <span data-key="t-dashboards">Super Admin Dashboard</span>
-                        </a>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Posts Module</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item"> 
-                                        <a href="{{ route('post.all') }}" 
-                                        @if(  Route::currentRouteName() == 'post.all' )
-                                            class="nav-link active"
-                                        @else
-                                            class="nav-link"
-                                        @endif data-key="t-analytics"> All Posts </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('post.create.page') }}" @if(  Route::currentRouteName() == 'post.create.page' )
-                                        class="nav-link active"
-                                    @else
-                                        class="nav-link"
-                                    @endif data-key="t-crm"> Create Post </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> 
+                        </a>                      
 
                         {{-- products routes starts --}}
                         <li class="nav-item">
@@ -77,7 +53,7 @@
                                         class="nav-link active"
                                     @else
                                         class="nav-link"
-                                    @endif data-key="t-crm"> Create Post </a>
+                                    @endif data-key="t-crm"> Create Product </a>
                                     </li>
                                 </ul>
                             </div>

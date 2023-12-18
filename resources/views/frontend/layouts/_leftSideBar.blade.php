@@ -19,17 +19,17 @@
                         <i class="fas fa-columns"></i>
                         <span>Dashboard</span>
                     </a>
-                </li>
-                <li @if( Route::currentRouteName()=='user.post.all' ) class="active" @endif>
-                    <a href="{{ route('user.post.all') }}">
+                </li>               
+                <li @if( Route::currentRouteName()=='user.products.all' ) class="active" @endif>
+                    <a href="{{ route('user.products.all') }}">
                         <i class="fas fa-user-cog"></i>
-                        <span>All Post</span>
+                        <span>All Products</span>
                     </a>
                 </li>
-                <li @if( Route::currentRouteName()=='user.post.create.page' ) class="active" @endif>
-                    <a href="{{ route('user.post.create.page') }}">
+                <li @if( Route::currentRouteName()=='user.products.create.page' ) class="active" @endif>
+                    <a href="{{ route('user.products.create.page') }}">
                         <i class="fas fa-lock"></i>
-                        <span>Create Post</span>
+                        <span>Create Product</span>
                     </a>
                 </li>               
             </ul>

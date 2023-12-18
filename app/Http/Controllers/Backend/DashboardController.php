@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
         if ( auth('super_admin')->check()) {
-
+            // $yesterday = Carbon::yesterday()->toDateString();
             $today   = Carbon::now()->day;           
             $lastday   = Carbon::now()->day - 1 ;
             $this_month   = Carbon::now()->month;

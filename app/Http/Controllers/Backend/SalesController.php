@@ -105,46 +105,5 @@ class SalesController extends Controller
  }
 
 
-//update
-public function update(Request $request,$id){
-    if ( auth('super_admin')->check() ) {
-    try {
-        try{
-            $this->SalesService->updateProduct($request->name , $request->quantity , $request->price , $id); 
-            
-            $redirectRoute = route('sales.all');
-            return response()->json(['redirect' => $redirectRoute , 'redirectMessage' => 'Product Updated Successfully'],200);               
-        
-        }catch(Exception $e){
-            return response()->json(['error' => $e->getMessage()], 200);
- 
-            }
-        } catch (Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 200);
-    }
-    }else{
-        return view('errors.404');
-        }
-}
-
-//delete
-public function delete($id){
-    if ( auth('super_admin')->check() ) {
-        try{
-            $this->SalesService->deleteProduct($id); 
-            session()->flash('success' , 'Post Deleted Successfull... ');
-            return back();            
-            // $redirectRoute = route('sales.all');
-            // return response()->json(['redirect' => $redirectRoute , 'redirectMessage' => 'Product Deleted Successfully'],200);               
-        
-        }catch(Exception $e){
-            return response()->json(['error' => $e->getMessage()], 200);
- 
-            }
-        }else{
-        return view('errors.404');
-        }
-
-    }
 }
 
