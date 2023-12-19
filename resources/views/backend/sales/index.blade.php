@@ -26,7 +26,7 @@
                                 <div class="row g-4 mb-3">
                                     <div class="col-sm-auto">
                                         <div>
-                                            <button type="button" class="btn btn-success add-btn" id="create-btn" ><i class="ri-add-line align-bottom me-1"></i><a href="{{ route('products.create.page') }}">Add</a> </button>
+                                            <button type="button" class="btn btn-success add-btn" id="create-btn" ><i class="ri-add-line align-bottom me-1"></i><a href="{{ route('sales.create.page') }}">Generate Sale</a> </button>
                                             <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                                         </div>
                                     </div>
@@ -118,57 +118,4 @@
     <script src="{{ asset('backend/assets/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/ajax_form_submit.js') }}"></script>
 
-    {{-- date picker start --}}
- 
-
-    {{-- date picker end --}}
-<script>
-        $("#search").on('input',function(){
-            var searchRequest = $(this).val();
-            $.ajax({
-                "type" : 'GET',
-                'url'  : '{{ route("sales.search") }}',
-                data : {
-                    search: searchRequest ,
-                },
-                success:function(response){
-                    $("#dynamic-row tr").remove()
-                    $.each(response.searchResult , function(index, val) { 
-                        let product_edit_route = "{{ route('products.edit',':id') }}";
-                        product_edit_route = product_edit_route.replace(':id',val.id);
-
-                        $("#dynamic-row").append(`
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
-                                </div>
-                            </th>
-                            
-                            <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                            <td class="customer_name">${ index+1 }</td>
-                            <td class="email">${ val.name }</td>
-                            <td class="email">${ val.quantity }</td>
-                            <td class="email">${ val.price }</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <div class="edit">
-                                        <button class="btn btn-sm btn-success edit-item-btn"><a href="{{ route('products.edit',['id'=>encrypt($single_sale->id)]) }}">Edit</a> </button>
-                                    </div>
-                                    <div class="remove">
-                                        <a class="btn btn-danger delete_user" onclick="confirm('are you sure to delete ?')" href={{ route('products.delete',['id'=>encrypt($single_sale->id)]) }}>Delete</a> 
-                                    </div>
-                                </div>
-                            </td>
-                            
-                        </tr>
-                       
-                        `)
-                       
-
-                    });
-                }
-            });
-        });
-    </script>
 @endpush

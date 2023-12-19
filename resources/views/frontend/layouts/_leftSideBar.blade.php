@@ -3,7 +3,7 @@
         <div class="profile-info-widget">
             <a href="#" class="booking-doc-img">
                
-                <img src="{{ asset('frontend/assets/task_img/user.png') }}" alt="User Image">
+                <img src="{{ asset('images/onion-removebg-preview.png') }}" alt="User Image">
              
             </a>
             <div class="profile-det-info">

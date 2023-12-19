@@ -71,7 +71,7 @@
                                         <h6 style="color: #ffffff">Passwd : 123456</h6></a>
                                         <div class="mb-4">
                                             <a href="" class="d-block">
-                                                <img src="{{ asset('frontend/assets/images/logo-light.png') }}" alt="" height="18">
+                                                <img src="{{ asset('images/onion-removebg-preview.png') }}" alt="" height="400">
                                             </a>
                                         </div>
                                         <div class="mt-auto">
@@ -121,7 +121,7 @@
                                     
                                     <div class="login-header">
                                         <h3>
-                                           User Login<a class="forgot-link" href="{{ route('register') }}" >Don’t have an
+                                            ShopKeeper Login<a class="forgot-link" href="{{ route('register') }}" >Don’t have an
                                                 account?</a>
                                         </h3>
                                     </div>

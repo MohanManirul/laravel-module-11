@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCrudRequet;
+use App\Models\Product;
 use App\Services\ProductCrudService;
 use Illuminate\Http\Request;
 use Exception;
@@ -92,8 +93,17 @@ public function update(Request $request,$id){
         }
 }
 
-public function search(){
-    return "search";
-}
+public function delete($id){
+    if (auth('super_admin')->check()) {
+        $my_product = Product::findOrFail(decrypt($id));
+        if (!is_null($my_product)) {           
+            $my_product->delete();
+        }
+        session()->flash('success' , 'Product Deleted Successfull... ');
+        return back();              
+        }else {
+            return view('errors.404');
+        }
+    }
 
 }

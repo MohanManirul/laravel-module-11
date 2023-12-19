@@ -26,7 +26,7 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::post('/products-update/{id}',  'update')->name('products.update');
         Route::post('/products-update/{id}',  'update')->name('products.update');
         Route::get('/products-delete/{id}',  'delete')->name('products.delete');
-
+        Route::get('/search',  'search')->name('products.search');
     });
 
     Route::controller(SalesController::class)->group(function(){
@@ -35,7 +35,13 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::post('/sales-create',  'store')->name('sales.store');
         Route::get('/sales-edit/{id}',  'edit')->name('sales.edit');
         Route::post('/sales-update/{id}',  'update')->name('sales.update');
+        
+        Route::get('/sales-search',  'salesSearch')->name('sales.search');
 
+
+
+        Route::get('/search',  'getProductStock')->name('check.product.stock');
+        Route::get('/get-unit-price',  'getUnitPrice')->name('get.unit.price');
     });
 
 }); 
