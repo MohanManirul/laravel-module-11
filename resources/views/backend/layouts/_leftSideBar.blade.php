@@ -85,7 +85,61 @@
                                 </ul>
                             </div>
                         </li> 
-                        {{-- sales routes sends --}}                     
+                        {{-- sales routes sends --}} 
+
+                        {{-- destinations routes starts --}}
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarDashboardsDestination" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Destination Module</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarDashboardsDestination">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item"> 
+                                        <a href="{{ route('destinations.all') }}" 
+                                        @if(  Route::currentRouteName() == 'destinations.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-analytics">All Destinations </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('destinations.create.page') }}" @if(  Route::currentRouteName() == 'destinations.create.page' )
+                                        class="nav-link active"
+                                    @else
+                                        class="nav-link"
+                                    @endif data-key="t-crm">Create Destinations </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
+                        {{-- destinations routes sends --}}  
+
+                        {{-- buses routes starts --}}
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarDashboardsBus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Bus Module</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarDashboardsBus">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item"> 
+                                        <a href="{{ route('buses.all') }}" 
+                                        @if(  Route::currentRouteName() == 'buses.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-analytics">All Buses </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('buses.create.page') }}" @if(  Route::currentRouteName() == 'buses.create.page' )
+                                        class="nav-link active"
+                                    @else
+                                        class="nav-link"
+                                    @endif data-key="t-crm">Create Buses </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
+                        {{-- buses routes sends --}}                     
                     
 
                     </ul>

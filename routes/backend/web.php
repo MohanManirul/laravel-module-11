@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Backend\BusController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\ProductsController;
 use App\Http\Controllers\Backend\SalesController;
@@ -42,6 +44,24 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
 
         Route::get('/search',  'getProductStock')->name('check.product.stock');
         Route::get('/get-unit-price',  'getUnitPrice')->name('get.unit.price');
+    });
+
+    Route::controller(DestinationController::class)->group(function(){
+        Route::get('/all-destinations',  'index')->name('destinations.all');
+        Route::get('/destinations-create',  'create')->name('destinations.create.page');
+        Route::post('/destinations-store',  'store')->name('destinations.store');
+        Route::get('/destinations-edit/{id}',  'edit')->name('destinations.edit');
+        Route::post('/destinations-update/{id}',  'update')->name('destinations.update');
+        Route::get('/destinations-delete/{id}',  'delete')->name('destinations.delete');
+    });
+
+    Route::controller(BusController::class)->group(function(){
+        Route::get('/all-buses',  'index')->name('buses.all');
+        Route::get('/buses-create',  'create')->name('buses.create.page');
+        Route::post('/buses-store',  'store')->name('buses.store');
+        Route::get('/buses-edit/{id}',  'edit')->name('buses.edit');
+        Route::post('/buses-update/{id}',  'update')->name('buses.update');
+        Route::get('/buses-delete/{id}',  'delete')->name('buses.delete');
     });
 
 }); 
