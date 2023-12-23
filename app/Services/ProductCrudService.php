@@ -2,7 +2,6 @@
 namespace App\Services;
 
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
 
 class ProductCrudService{
     public function storeProduct($name,$quantity,$price){

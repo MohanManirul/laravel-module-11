@@ -3,9 +3,11 @@
 use App\Http\Controllers\Backend\BusController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DestinationController;
+use App\Http\Controllers\Backend\FareVariantController;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\ProductsController;
 use App\Http\Controllers\Backend\SalesController;
+use App\Http\Controllers\Backend\SeatReservationController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(LoginController::class)->prefix('/adminpanel')->group(function(){
@@ -62,6 +64,24 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::get('/buses-edit/{id}',  'edit')->name('buses.edit');
         Route::post('/buses-update/{id}',  'update')->name('buses.update');
         Route::get('/buses-delete/{id}',  'delete')->name('buses.delete');
+    });
+
+    Route::controller(FareVariantController::class)->group(function(){
+        Route::get('/all-fares',  'index')->name('fares.all');
+        Route::get('/fares-create',  'create')->name('fares.create.page');
+        Route::post('/fares-store',  'store')->name('fares.store');
+        Route::get('/fares-edit/{id}',  'edit')->name('fares.edit');
+        Route::post('/fares-update/{id}',  'update')->name('fares.update');
+        Route::get('/fares-delete/{id}',  'delete')->name('fares.delete');
+    });
+
+    Route::controller(SeatReservationController::class)->group(function(){
+        Route::get('/all-seat-reservations',  'index')->name('seat.reservations.all');
+        Route::get('/seat-reservations-create',  'create')->name('seat.reservations.create.page');
+        Route::post('/seat-reservations-store',  'store')->name('seat.reservations.store');
+        Route::get('/seat-reservations-edit/{id}',  'edit')->name('seat.reservations.edit');
+        Route::post('/seat-reservations-update/{id}',  'update')->name('seat.reservations.update');
+        Route::get('/seat-reservations-delete/{id}',  'delete')->name('seat.reservations.delete');
     });
 
 }); 

@@ -139,6 +139,60 @@
                                 </ul>
                             </div>
                         </li> 
+                        {{-- buses routes sends --}}  
+
+                        {{-- buses routes starts --}}
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarDashboardsBusFareVariant" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Bus Fare Variant Module</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarDashboardsBusFareVariant">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item"> 
+                                        <a href="{{ route('fares.all') }}" 
+                                        @if(  Route::currentRouteName() == 'fares.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-analytics">All Fare Variant </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('fares.create.page') }}" @if(  Route::currentRouteName() == 'buses.create.page' )
+                                        class="nav-link active"
+                                    @else
+                                        class="nav-link"
+                                    @endif data-key="t-crm">Create Fare Variant </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
+                        {{-- buses routes sends --}} 
+
+                        {{-- buses routes starts --}}
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarDashboardsSeatReservation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Seat Reservation Module</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarDashboardsBusFareVariant">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item"> 
+                                        <a href="{{ route('seat.reservations.all') }}" 
+                                        @if(  Route::currentRouteName() == 'seat.reservations.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-analytics">All Seat Reservations </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('seat.reservations.create.page') }}" @if(  Route::currentRouteName() == 'buses.create.page' )
+                                        class="nav-link active"
+                                    @else
+                                        class="nav-link"
+                                    @endif data-key="t-crm">Create Seat Reservation </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
                         {{-- buses routes sends --}}                     
                     
 
