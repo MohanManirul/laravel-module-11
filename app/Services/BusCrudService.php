@@ -16,8 +16,7 @@ class BusCrudService{
             'name'                      => $name,
             'image'                     => $img,
             'starting_point_id'         => $starting_point_id,
-            'end_point_id'              => $end_point_id,
-       
+            'end_point_id'              => $end_point_id,       
             'bus_type'                  => $bus_type,
             'bus_number'                => $bus_number,
             'bus_registration_number'   => $bus_registration_number,
