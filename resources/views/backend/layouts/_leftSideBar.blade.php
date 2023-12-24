@@ -138,12 +138,36 @@
                                         @endif data-key="t-crm">Create Buses </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="{{ route('bus.seat.all') }}" 
+                                        @if(  Route::currentRouteName() == 'bus.seat.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">All Bus Seat</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="{{ route('bus.seat.create.page') }}" 
                                         @if(  Route::currentRouteName() == 'bus.seat.create.page' )
                                             class="nav-link active"
                                         @else
                                             class="nav-link"
                                         @endif data-key="t-crm">Create Bus Seat</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('bus.route.all') }}" 
+                                        @if(  Route::currentRouteName() == 'bus.route.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">All Bus Route</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('bus.route.create.page') }}" 
+                                        @if(  Route::currentRouteName() == 'bus.route.create.page' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">Create Bus Route</a>
                                     </li>
                                 </ul>
                             </div>

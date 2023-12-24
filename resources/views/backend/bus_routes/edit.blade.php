@@ -4,7 +4,7 @@
 @endsection
 
 @section('per_page_title')
-    {{ __('Edit Bus Seat | Super Admin Dashboard') }}
+    {{ __('Edit Bus Route | Super Admin Dashboard') }}
 @endsection
 
 @push('per_page_css')
@@ -42,9 +42,9 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">{{ __('Home') }}</a></li>
-                                        <li class="breadcrumb-item"><a href="#">{{ __('Bus Seat Management') }}</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ route('bus.seat.all') }}">{{ __('Bus Seat') }}</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{ __('Add Bus Seat') }}</li>
+                                        <li class="breadcrumb-item"><a href="#">{{ __('Bus Route Management') }}</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('bus.route.all') }}">{{ __('Bus Route') }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ __('Add Bus Route') }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -56,23 +56,23 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">{{ __('Edit Bus Seat') }}</h5>                                    
-                                            <a href="{{ route('bus.seat.all') }}" class="btn btn-outline-dark waves-effect waves-light float-end">{{ __('All Bus Seat') }}</a>
+                                        <h5 class="card-title mb-0">{{ __('Edit Bus Route') }}</h5>                                    
+                                            <a href="{{ route('bus.route.all') }}" class="btn btn-outline-dark waves-effect waves-light float-end">{{ __('All Bus Route') }}</a>
                                     
                                     </div>
                                     <div class="card-body">
 
-                                        <form class="ajax-form" action="{{ route('bus.seat.update', ['id' => encrypt($single_seat->id)]) }}" method="post" autocomplete="off" enctype="multipart/form-data">
+                                        <form class="ajax-form" action="{{ route('bus.route.update', ['id' => encrypt($single_seat->id)]) }}" method="post" autocomplete="off" enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="row">
-                                                <!-- bus seat_number start -->
+                                                <!-- bus route_name start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group ">
-                                                    <label for="seat_number" class="form-label">{{ __('Bus Seat Number') }}</label><span class="require-span">*</span>
-                                                    <input type="text" name="seat_number" class="form-control" id="seat_number" placeholder="{{ __('Enter Bus Seat Number') }}" value="{{ $single_seat->seat_number }}">
+                                                    <label for="route_name" class="form-label">{{ __('Bus Route Name') }}</label><span class="require-span">*</span>
+                                                    <input type="text" name="route_name" class="form-control" id="route_name" placeholder="{{ __('Enter Bus Route Name') }}" value="{{ $single_seat->route_name }}">
                                                     <input type="hidden" name="id" value="{{ $single_seat->id }}" class="form-control">
                                                 </div>                                                    
-                                                <!-- bus seat_number ends -->
+                                                <!-- bus route_name ends -->
 
                                             <div class="row">
                                                 <div class="col-md-6">
