@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BusController;
+use App\Http\Controllers\Backend\BusSeatController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\FareVariantController;
@@ -64,6 +65,15 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::get('/buses-edit/{id}',  'edit')->name('buses.edit');
         Route::post('/buses-update/{id}',  'update')->name('buses.update');
         Route::get('/buses-delete/{id}',  'delete')->name('buses.delete');
+    });
+
+    Route::controller(BusSeatController::class)->group(function(){
+        Route::get('/all-bus-seat',  'index')->name('bus.seat.all');
+        Route::get('/bus-seat-create',  'create')->name('bus.seat.create.page');
+        Route::post('/bus-seat-store',  'store')->name('bus.seat.store');
+        Route::get('/bus-seat-edit/{id}',  'edit')->name('bus.seat.edit');
+        Route::post('/bus-seat-update/{id}',  'update')->name('bus.seat.update');
+        Route::get('/bus-seat-delete/{id}',  'delete')->name('bus.seat.delete');
     });
 
     Route::controller(FareVariantController::class)->group(function(){

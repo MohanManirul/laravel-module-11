@@ -5,8 +5,6 @@ use App\Models\Destination;
 
 class DestinationCrudService{
     public function storeDestination($name){
-
-
         Destination::create([
             'name' => $name
           ]);
@@ -15,7 +13,7 @@ class DestinationCrudService{
     //update
     public function updateDestination($name , $id){              
      
-       $product =  Destination::where('id', decrypt($id))
+       Destination::where('id', decrypt($id))
         ->update([
             'name'       => $name
           ]);

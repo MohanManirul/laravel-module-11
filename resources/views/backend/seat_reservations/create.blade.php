@@ -381,10 +381,9 @@ div {
 
                                                     </div>
                                                     <div class="col-md-4">
-                                                        BOARDING/DROPPING POINT:
-                                                         <!-- starting point start -->
-                                                       
-                                                            <label for="">{{ __('Starting Point') }}</label><span class="require-span">*</span>
+                                                        BOARDING/DROPPING POINT: <span class="require-span">*</span>
+                                                         <!-- starting point start -->                                                       
+                                                            
                                                             <select class="form-select  form-control select2" name="starting_point_id" id="starting_point_id">
                                                                 <option selected disabled >{{ __('Select Boarding Point') }}</option>
                                                                 <option   >{{ __('Rajshahi Counter') }} at 12.00pm</option>
@@ -394,13 +393,40 @@ div {
                                                                     <option value="{{ $single_destination->id }}">{{ $single_destination->name }}</option>
                                                                 @endforeach --}}
                                                             </select>
+
+                                                            <!-- dropping point --->
+                                                            <label for="">{{ __('Dropping Point') }}</label><span class="require-span">*</span>
+                                                            <select class="form-select  form-control select2" name="starting_point_id" id="starting_point_id">
+                                                                <option selected disabled >{{ __('Select Dropping Point') }}</option>
+                                                                <option   >{{ __('Rajshahi Counter') }} at 12.00pm</option>
+                                                                <option   >{{ __('Baneswar Counter') }} at 11.30pm</option>
+                                                                <option   >{{ __('Puthia Counter') }} at 11.00pm</option>
+                                                                {{-- @foreach ($destinations as $single_destination)                                                            
+                                                                    <option value="{{ $single_destination->id }}">{{ $single_destination->name }}</option>
+                                                                @endforeach --}}
+                                                            </select> <br>
+
+                                                            <!-- bus name start -->                                                    
+                                                            <label for="name" class="form-label">{{ __('SEAT INFORMATION:') }}</label><span class="require-span">*</span>
+                                                            <div class="card-body " style="border: 1px solid #df0101; border-radius:2px">
+                                                                <h5>Seat Fare : 0 tk</h5>
+                                                                <h5>Service Charge : 0 tk</h5>
+                                                            </div>                                                                                              
+                                                            <!-- bus name ends -->
                                                                                                     
                                                         <!-- starting point ends -->
                                                     </div>
                                                     <div class="col-md-4">
                                                        <!-- bus name start -->                                                    
                                                         <label for="name" class="form-label">{{ __('MOBILE NUMBER') }}</label><span class="require-span">*</span>
-                                                        <input type="number" name="name" class="form-control" id="name" placeholder="{{ __('Enter MOBILE NUMBER*') }}">                                                                                               
+                                                        <input type="number" name="name" class="form-control" id="name" placeholder="{{ __('Enter MOBILE NUMBER*') }}">
+                                                       
+                                                        <div class="container-fluid mt-2">
+                                                            <div class="row">
+                                                                <button type="submit" class="btn btn-danger waves-effect waves-light float-end">{{ __('Submit') }}</button>
+                                                            </div>                                                          
+                                                        </div>                                                                                              
+                                                        
                                                     <!-- bus name ends -->
                                                     </div>
                                                 </div>
@@ -416,6 +442,7 @@ div {
                                                 </div>
                                             </div>
                                         </form>
+
 
                                     </div>
                                 </div>
@@ -454,5 +481,6 @@ div {
             });
         });
     </script>
+
 
 @endpush

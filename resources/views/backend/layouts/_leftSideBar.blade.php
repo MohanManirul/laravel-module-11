@@ -130,11 +130,20 @@
                                         @endif data-key="t-analytics">All Buses </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('buses.create.page') }}" @if(  Route::currentRouteName() == 'buses.create.page' )
-                                        class="nav-link active"
-                                    @else
-                                        class="nav-link"
-                                    @endif data-key="t-crm">Create Buses </a>
+                                        <a href="{{ route('buses.create.page') }}" 
+                                        @if(  Route::currentRouteName() == 'buses.create.page' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">Create Buses </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('bus.seat.create.page') }}" 
+                                        @if(  Route::currentRouteName() == 'bus.seat.create.page' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">Create Bus Seat</a>
                                     </li>
                                 </ul>
                             </div>
@@ -168,12 +177,12 @@
                         </li> 
                         {{-- buses routes sends --}} 
 
-                        {{-- buses routes starts --}}
+                        {{-- reservation routes starts --}}
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboardsSeatReservation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <a class="nav-link menu-link" href="#sidebarDashboardsBusSeatReservation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Seat Reservation Module</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboardsBusFareVariant">
+                            <div class="collapse menu-dropdown" id="sidebarDashboardsBusSeatReservation">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item"> 
                                         <a href="{{ route('seat.reservations.all') }}" 
@@ -184,7 +193,7 @@
                                         @endif data-key="t-analytics">All Seat Reservations </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('seat.reservations.create.page') }}" @if(  Route::currentRouteName() == 'buses.create.page' )
+                                        <a href="{{ route('seat.reservations.create.page') }}" @if(  Route::currentRouteName() == 'reservation.create.page' )
                                         class="nav-link active"
                                     @else
                                         class="nav-link"
@@ -193,7 +202,7 @@
                                 </ul>
                             </div>
                         </li> 
-                        {{-- buses routes sends --}}                     
+                        {{-- reservation routes sends --}}                     
                     
 
                     </ul>
