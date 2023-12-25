@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bus;
+use App\Models\Seat;
 use App\Models\SeatReservation;
 use App\Services\SeatReservationService;
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class SeatReservationController extends Controller
     // index
     public function index(){
         if ( auth('super_admin')->check() ) {            
-            $all_seat_reservations = SeatReservation::with('buses','start','end')->select('id', 'bus_id' , 'fare' ,'departure_point_id' ,'araival_point_id'  ,'departure_at' ,'araival_at' ,'travel_date')->latest()->get();
+          return  $all_seat_reservations = SeatReservation::with('buses','start','end')->select('id', 'bus_id' , 'fare' ,'departure_point_id' ,'araival_point_id'  ,'departure_at' ,'araival_at' ,'travel_date')->latest()->get();
             return view($this->folderPath.'index',compact('all_seat_reservations'));
         }else{
             return view('errors.404');
@@ -30,7 +32,9 @@ class SeatReservationController extends Controller
    //create
    public function create(){
     if ( auth('super_admin')->check() ) {
-        return view($this->folderPath.'create');
+          $all_buses = Bus::with('start','end')->select('id','name','image','starting_point_id','end_point_id','seats','bus_type','stopage','is_active')->latest()->get();
+          $all_seats = Seat::select('id','seat_number')->get();
+        return view($this->folderPath.'create',compact('all_buses','all_seats'));
     }else{
         return view('errors.404');
     }

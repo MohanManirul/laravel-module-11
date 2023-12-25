@@ -22,6 +22,7 @@ class BusCrudRequet extends FormRequest
     public function rules(): array
     {
         return [
+            "jurney_date" => "required",
             "name" => "required|unique:buses,name,".$this->id,
             "bus_number" => "required|unique:buses,bus_number,".$this->id,
             "bus_registration_number" => "required|unique:buses,bus_registration_number,".$this->id,

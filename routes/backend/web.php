@@ -102,7 +102,7 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::get('/seat-reservations-edit/{id}',  'edit')->name('seat.reservations.edit');
         Route::post('/seat-reservations-update/{id}',  'update')->name('seat.reservations.update');
         Route::get('/seat-reservations-delete/{id}',  'delete')->name('seat.reservations.delete');
-    });
+    }); 
 
 }); 
 

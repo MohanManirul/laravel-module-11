@@ -65,6 +65,12 @@
                                         <form class="ajax-form" action="{{ route('buses.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
+                                                <!-- jurney date start -->
+                                                <div class="col-md-6 col-12 mb-2 form-group ">
+                                                    <label for="jurney_date" class="form-label">{{ __('Jurney Date') }}</label><span class="require-span">*</span>
+                                                    <input type="date" name="jurney_date" class="form-control" id="jurney_date" placeholder="{{ __('Jurney Date') }}">                                                        
+                                                </div>                                                    
+                                                <!-- jurney date ends -->
                                                 <!-- bus name start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group ">
                                                     <label for="name" class="form-label">{{ __('Bus Name') }}</label><span class="require-span">*</span>
@@ -144,7 +150,22 @@
                                                 </div>                                                    
                                                 <!-- service charge  ends -->
 
+                                                 <!-- seat number start --> 
+                                                 <div class="row">
+                                                    <label for="seat_number">Seats</label>
+                                                     @foreach ($all_seats as $all_seat)                                                     
+                                                     <div class="col-md-2 col-12 mb-2 form-group ">
+                                                         <div class="form-check form-switch form-switch-right form-switch-md float-end">
+                                                             <span class="float-end">{{ $all_seat->seat_number }}</span>
+                                                             <input class="form-check-input me-2" type="checkbox" name="seat_number[]" id="seat_number" value="{{ $all_seat->id }}" checked>
+                                                         </div>                                                       
+                                                     </div>
+                                                     @endforeach
+                                                 </div> 
+                                                <!-- seat number  ends -->
+
                                                 <!-- cancellation policy start --> 
+                                               
                                                 <div class="col-md-12 col-12 mb-2 form-group ">
                                                     <label for="cancellation_policy" class="form-label">{{ __('Cancellation Policy') }}</label><span class="require-span">*</span>
                                                     <textarea name="cancellation_policy" id="cancellation_policy"  class="form-control"></textarea>                                                    

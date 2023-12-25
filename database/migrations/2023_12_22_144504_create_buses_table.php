@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
+            $table->date('jurney_date')->require();
             $table->string('name')->unique();
             $table->string("image");
             $table->foreignId('starting_point_id')->constrained('destinations');

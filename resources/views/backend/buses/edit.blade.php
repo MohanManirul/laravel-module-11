@@ -66,6 +66,13 @@
                                             @csrf
 
                                             <div class="row">
+
+                                                <!-- jurney date start -->
+                                                <div class="col-md-6 col-12 mb-2 form-group ">
+                                                    <label for="jurney_date" class="form-label">{{ __('Jurney Date') }}</label><span class="require-span">*</span>
+                                                    <input type="date" name="jurney_date" class="form-control" value="{{ $single_bus->jurney_date }}" id="jurney_date" placeholder="{{ __('Jurney Date') }}">                                                        
+                                                </div>                                                    
+                                                <!-- jurney date ends -->
                                                 <!-- bus name start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group ">
                                                     <label for="name" class="form-label">{{ __('Bus Name') }}</label><span class="require-span">*</span>
@@ -123,8 +130,8 @@
                                                 <!-- bus number start --> 
                                                 <div class="col-md-6 col-12 mb-2 form-group ">
                                                     <label for="bus_number" class="form-label">{{ __('Bus Number') }}</label><span class="require-span">*</span>
-                                                    <input type="number" nname="bus_number" value="{{ $single_bus->bus_number }}"  class="form-control" id="bus_number" placeholder="{{ __('Bus Number') }}" >
-                                                    <input type="hidden" name="bus_registration_number" value="{{ $single_bus->bus_number }}" class="form-control">                                                        
+                                                    <input type="number" name="bus_number" value="{{ $single_bus->bus_number }}"  class="form-control" id="bus_number" placeholder="{{ __('Bus Number') }}" >
+                                                    <input type="hidden" name="bus_number" value="{{ $single_bus->bus_number }}" class="form-control">                                                        
                                                 </div>                                                    
                                                 <!-- bus number ends -->
 
@@ -150,6 +157,29 @@
                                                 </div>                                                    
                                                 <!-- service charge  ends -->
 
+                                                <!-- seat number start --> 
+                                                <div class="row">
+                                                    <label for="seat_number">Seats</label>
+                                                     @foreach ($single_bus->bus_seats as $available_all_seat) 
+                                                                                                     
+                                                        <div  class="col-md-2 col-12 mb-2 form-group ">
+                                                            <div class="form-check form-switch form-switch-right form-switch-md float-end">
+                                                               
+                                                                <span class="float-end">{{ $available_all_seat->seat_number }}</span>
+                                                                <input class="form-check-input me-2" type="checkbox" name="seat_number[]" id="seat_number" value="{{ $available_all_seat->id }}" checked> 
+                                                                @php  
+                                                                  $seat_name =  App\Models\Seat::select('seat_number')->where('id' , $available_all_seat->seat_id)->first();
+                                                                  @endphp
+                                                                  <p>{{ $seat_name->seat_number }}</p>
+                                                            </div>                                                       
+                                                        </div>
+                                                       
+                                                    @endforeach
+                                                 </div> 
+                                                <!-- seat number  ends -->                                                
+                                                
+                                                     
+                                                 
                                                 <!-- cancellation policy start --> 
                                                 <div class="col-md-12 col-12 mb-2 form-group ">
                                                     <label for="cancellation_policy" class="form-label">{{ __('Cancellation Policy') }}</label><span class="require-span">*</span>

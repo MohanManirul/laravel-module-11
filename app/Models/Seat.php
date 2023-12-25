@@ -9,4 +9,10 @@ class Seat extends Model
 {
     use HasFactory;
     protected $fillable = ['seat_number'];
+
+    public function bus_seats()
+    {
+        return $this->hasMany(BusSeat::class);
+    }
+ 
 }
