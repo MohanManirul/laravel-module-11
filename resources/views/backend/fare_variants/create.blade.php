@@ -65,21 +65,13 @@
                                         <form class="ajax-form" action="{{ route('fares.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
-
-                                                 <!-- travel_date start --> 
-                                                 <div class="col-md-6 col-12 mb-2 form-group ">
-                                                    <label for="travel_date" class="form-label">{{ __('Travel Date') }}</label><span class="require-span">*</span>
-                                                    <input type="date" name="travel_date" class="form-control" id="travel_date" placeholder="{{ __('Travel Date') }}" >                                                        
-                                                </div>                                                    
-                                                <!-- travel_date ends -->
-
                                                 <!-- bus name start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group">
                                                     <label for="">{{ __('Bus') }}</label><span class="require-span">*</span>
                                                     <select class="form-select select2 form-control" name="bus_id" id="bus_id">
                                                         <option selected disabled >{{ __('Select Bus') }}</option>
                                                         @foreach ($buses as $buses)                                                            
-                                                            <option value="{{ $buses->id }}">{{ $buses->name }}  ( {{ $buses->bus_type }} )</option>
+                                                            <option value="{{ $buses->id }}">{{ $buses->bus_operators->name }}  ( {{ $buses->bus_type }} )</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

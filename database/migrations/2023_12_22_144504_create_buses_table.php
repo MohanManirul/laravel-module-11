@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
             $table->date('jurney_date')->require();
-            $table->string('name')->unique();
+            $table->foreignId('bus_operators_id')->constrained('bus_operators');
             $table->foreignId('bus_route_id')->constrained('bus_routes');
-            $table->string("image");
+            $table->string("image");            
             $table->foreignId('starting_point_id')->constrained('destinations');
             $table->foreignId('end_point_id')->constrained('destinations');
             $table->integer('seats')->nullable()->default('36');

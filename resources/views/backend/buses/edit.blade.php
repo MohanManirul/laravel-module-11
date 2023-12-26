@@ -161,7 +161,7 @@
                                                 <div class="row">
                                                     <label for="seat_number">Seats</label>
                                                      @foreach ($single_bus->bus_seats as $available_all_seat) 
-                                                                                                     
+                                                                                                      
                                                         <div  class="col-md-2 col-12 mb-2 form-group ">
                                                             <div class="form-check form-switch form-switch-right form-switch-md float-end">
                                                                

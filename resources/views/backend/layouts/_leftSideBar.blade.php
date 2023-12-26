@@ -105,10 +105,26 @@
                                     <li class="nav-item">
                                         <a href="{{ route('destinations.create.page') }}" @if(  Route::currentRouteName() == 'destinations.create.page' )
                                         class="nav-link active"
-                                    @else
-                                        class="nav-link"
-                                    @endif data-key="t-crm">Create Destinations </a>
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">Create Destinations </a>
                                     </li>
+                                    {{-- bus operator start --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('bus.operator.all') }}" @if(  Route::currentRouteName() == 'bus.operator.all' )
+                                        class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">All Bus Operator </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('bus.operator.create.page') }}" @if(  Route::currentRouteName() == 'bus.operator.create.page' )
+                                        class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-crm">Create Bus Operator </a>
+                                    </li>
+                                    {{-- bus operator ends --}}
                                 </ul>
                             </div>
                         </li> 

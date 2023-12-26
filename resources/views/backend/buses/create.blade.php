@@ -82,12 +82,17 @@
                                                     </select>
                                                 </div>                                     
                                                 <!-- end point ends -->  
-                                                <!-- bus name start -->
-                                                <div class="col-md-6 col-12 mb-2 form-group ">
-                                                    <label for="name" class="form-label">{{ __('Bus Name') }}</label><span class="require-span">*</span>
-                                                    <input type="text" name="name" class="form-control" id="name" placeholder="{{ __('Enter Bus Name') }}">                                                        
-                                                </div>                                                    
-                                                <!-- bus name ends -->
+                                                <!-- bus operator start -->
+                                                <div class="col-md-6 col-12 mb-2 form-group"> 
+                                                    <label for="">{{ __('Bus Operator') }}</label><span class="require-span">*</span>
+                                                    <select class="form-select  form-control select2" name="bus_operators_id" id="bus_operators_id">
+                                                        <option selected disabled >{{ __('Select Bus Operator') }}</option>
+                                                        @foreach ($bus_operators as $bus_operator)                                                            
+                                                            <option value="{{ $bus_operator->id }}">{{ $bus_operator->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>                                              
+                                                <!-- bus operator ends -->
 
                                                 <!-- bus type start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group">
@@ -152,7 +157,7 @@
                                                     <label for="stopage" class="form-label">{{ __('Stopage') }}</label><span class="require-span">*</span>
                                                     <input type="text" name="stopage" class="form-control" id="stopage" placeholder="{{ __('Stopage') }}" >                                                        
                                                 </div>                                                    
-                                                <!-- stopage ends -->
+                                                <!-- stopage ends --> 
 
                                                 <!-- service charge start --> 
                                                 <div class="col-md-6 col-12 mb-2 form-group ">

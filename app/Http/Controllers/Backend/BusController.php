@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusCrudRequet;
 use App\Models\Bus;
+use App\Models\BusOperator;
 use App\Models\BusRoute;
 use App\Models\BusSeat;
 use App\Models\Destination;
@@ -17,7 +18,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
-class BusController extends Controller
+class BusController extends Controller 
 {
     protected $folderPath;
     protected $BusCrudService;
@@ -30,7 +31,7 @@ class BusController extends Controller
     // index
     public function index(){
         if ( auth('super_admin')->check() ) {            
-            $all_buses = Bus::with('start','end')->select('id','jurney_date','name','image','starting_point_id','end_point_id','seats','bus_type','stopage','is_active')->latest()->get();     
+            $all_buses = Bus::with('start','end','bus_operators')->select('id','jurney_date','bus_operators_id','image','starting_point_id','end_point_id','seats','bus_type','stopage','is_active')->latest()->get();     
             return view($this->folderPath.'index',compact('all_buses'));
         }else{
             return view('errors.404');
@@ -40,10 +41,11 @@ class BusController extends Controller
    //create 
    public function create(){
     if ( auth('super_admin')->check() ) {
+        $bus_operators = BusOperator::select('id','name')->get();
         $all_routes = BusRoute::select('id','route_name')->latest()->get();
         $all_seats = Seat::select('id','seat_number')->get();
         $destinations = Destination::select('id','name')->orderByDesc('id')->get();
-        return view($this->folderPath.'create',compact('destinations','all_seats','all_routes'));
+        return view($this->folderPath.'create',compact('destinations','all_seats','all_routes','bus_operators'));
     }else{
         return view('errors.404');
     }
@@ -116,7 +118,8 @@ class BusController extends Controller
 
         $bus_data = [
             'jurney_date' => $request->jurney_date,
-            'name' => $request->name,
+            'bus_operators_id' => $request->bus_operators_id,
+            'bus_route_id' => $request->bus_route_id,
             'image' => $request->image,
             'starting_point_id' => $request->starting_point_id,
             'end_point_id' => $request->end_point_id,

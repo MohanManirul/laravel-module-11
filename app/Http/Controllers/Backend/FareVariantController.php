@@ -24,7 +24,7 @@ class FareVariantController extends Controller
     // index
     public function index(){
         if ( auth('super_admin')->check() ) {            
-            $all_fare_variants = FareVariant::with('buses','start','end')->select('id', 'bus_id' , 'fare' ,'departure_point_id' ,'araival_point_id'  ,'departure_at' ,'araival_at' ,'travel_date')->latest()->get();
+            $all_fare_variants = FareVariant::with('buses','start','end','buses.bus_operators')->select('id', 'bus_id' , 'fare' ,'departure_point_id' ,'araival_point_id'  ,'departure_at' ,'araival_at')->latest()->get();
             return view($this->folderPath.'index',compact('all_fare_variants'));
         }else{
             return view('errors.404');
@@ -35,7 +35,7 @@ class FareVariantController extends Controller
    public function create(){
     if ( auth('super_admin')->check() ) {
         $destinations = Destination::select('id','name')->orderByDesc('id')->get();
-        $buses = Bus::select('id','name','bus_type')->orderByDesc('id')->get();
+        $buses = Bus::with('bus_operators')->select('id','bus_operators_id','bus_type')->orderByDesc('id')->get();
         return view($this->folderPath.'create',compact('buses','destinations'));
     }else{
         return view('errors.404');

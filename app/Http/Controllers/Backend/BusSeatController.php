@@ -33,8 +33,8 @@ class BusSeatController extends Controller
    //create
    public function create(){
     if ( auth('super_admin')->check() ) {
-        $buses = Bus::select('id','name')->orderByDesc('id')->get();
-        return view($this->folderPath.'create',compact('buses'));
+        // $buses = Bus::select('id','name')->orderByDesc('id')->get();
+        return view($this->folderPath.'create');
     }else{
         return view('errors.404');
     }

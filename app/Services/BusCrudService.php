@@ -17,7 +17,7 @@ class BusCrudService{
 
     $bus = Bus::create([
             'jurney_date'               => $bus_data['bus_data']['jurney_date'],
-            'name'                      => $bus_data['bus_data']['name'],
+            'bus_operators_id'          => $bus_data['bus_data']['bus_operators_id'],
             'bus_route_id'              => $bus_data['bus_data']['bus_route_id'],
             'image'                     => $img,
             'starting_point_id'         => $bus_data['bus_data']['starting_point_id'],
@@ -61,7 +61,7 @@ class BusCrudService{
         $bus = Bus::where('id', $id)
         ->update([
             'jurney_date'               => $bus_data['bus_data']['jurney_date'],
-            'name'                      => $bus_data['bus_data']['name'],
+            'bus_operators_id'          => $bus_data['bus_data']['bus_operators_id'],
             'bus_route_id'              => $bus_data['bus_data']['bus_route_id'],
             'image'                     => $img,
             'starting_point_id'         => $bus_data['bus_data']['starting_point_id'],

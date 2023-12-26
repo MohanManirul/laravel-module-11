@@ -75,7 +75,9 @@
                                                     <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
                                                     <td class="customer_name">{{ $key+1 }}</td>
                                                     <td class="email">{{ $single_buse->jurney_date }}</td>                                                    
-                                                    <td class="email">{{ $single_buse->name }}</td>                                                    
+                                                    <td class="email">
+                                                     {{ $single_buse->bus_operators->name  }}                                                       
+                                                        
                                                     <td class="phone"><img style="width: 50px;height:auto" src="{{ asset('images/buses/' . $single_buse->image) }}" alt="Image"></td>                                                   
                                                     <td class="email">
                                                         @foreach ($single_buse->start as $start_point)

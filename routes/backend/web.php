@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BusController;
+use App\Http\Controllers\Backend\BusOperatorController;
 use App\Http\Controllers\Backend\BusRouteController;
 use App\Http\Controllers\Backend\BusSeatController;
 use App\Http\Controllers\Backend\BusTripController;
@@ -58,6 +59,14 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::get('/destinations-edit/{id}',  'edit')->name('destinations.edit');
         Route::post('/destinations-update/{id}',  'update')->name('destinations.update');
         Route::get('/destinations-delete/{id}',  'delete')->name('destinations.delete');
+    });
+
+    Route::controller(BusOperatorController::class)->group(function(){
+        Route::get('/all-bus-operator',  'index')->name('bus.operator.all');
+        Route::get('/bus-operator-create',  'create')->name('bus.operator.create.page');
+        Route::post('/bus-operator-store',  'store')->name('bus.operator.store');
+        Route::get('/bus-operator-edit/{id}',  'edit')->name('bus.operator.edit');
+        Route::post('/bus-operator-update/{id}',  'update')->name('bus.operator.update');
     });
 
     Route::controller(BusController::class)->group(function(){

@@ -12,7 +12,7 @@ class FareVariant extends Model
 
     public function buses()
     {
-        return $this->hasMany(Bus::class,'id','bus_id');
+        return $this->belongsTo(Bus::class,'id','bus_operators_id');
     }
 
     public function start()
