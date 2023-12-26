@@ -6,8 +6,12 @@ use App\Http\Controllers\Frontend\RegisterController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserPostController;
 use App\Http\Controllers\Frontend\UserProductsController;
+use App\Http\Controllers\TicketQueryPageController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/ticket-query', [TicketQueryPageController::class, 'ticketQueryPage'])->name('ticket.query.page');
+Route::get('/bus/search/', [TicketQueryPageController::class, 'availableBus'])->name('available.bus');
 
 Route::get('/', [HomepageController::class, 'index'])->name('/');
 Route::get('/home', [HomepageController::class, 'home'])->name('home');

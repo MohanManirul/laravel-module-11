@@ -36,20 +36,22 @@
   <!-- End Hero --> 
 
       <!-- page container area start -->
-      @include('frontend.layouts._header')
+      {{-- @include('frontend.layouts._header') --}}
 
       <div class="content" style="transform: none; min-height: 201px;">
         <div class="container-fluid" style="transform: none;">
           <div class="row"  style="transform: none;">
-
+          
+            <!--
             <div class="col-md-5 col-lg-4 col-xl-3 " style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
               <div style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px; left: 30px;">
 
-                @include('frontend.layouts._leftSideBar')
+                {{-- @include('frontend.layouts._leftSideBar') --}}
               </div>
             </div>
+          -->
       
-            <div class="col-md-7 col-lg-8 col-xl-9">   
+            <div class="col-md-12">   
               <div class="row">
                 <div class="col-md-12">              
                   @yield('body-content')

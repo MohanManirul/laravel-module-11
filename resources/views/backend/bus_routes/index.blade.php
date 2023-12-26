@@ -80,7 +80,7 @@
                                                     <td>
                                                         <div class="d-flex gap-2">
                                                             <div class="edit">
-                                                                <button class="btn btn-sm btn-success edit-item-btn"><a href="{{ route('bus.seat.edit',['id'=>encrypt($all_route->id)]) }}"><span style="color:#fff">Edit</span></a> </button>
+                                                                <button class="btn btn-sm btn-success edit-item-btn"><a ><span style="color:#fff">Edit</span></a> </button>
                                                             </div>
                                                         </div>
                                                     </td>
