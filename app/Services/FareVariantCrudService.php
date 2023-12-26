@@ -14,7 +14,6 @@ class FareVariantCrudService{
             'araival_point_id'      => $araival_point_id,
             'departure_at'          => $departure_at,
             'araival_at'            => $araival_at,
-            'travel_date'            => $travel_date,
           ]);
     }
     
@@ -29,7 +28,6 @@ class FareVariantCrudService{
             'araival_point_id'      => $araival_point_id,
             'departure_at'          => $departure_at,
             'araival_at'            => $araival_at,
-            'travel_date'           => $travel_date,
           ]);
       
     }

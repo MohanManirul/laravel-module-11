@@ -28,7 +28,6 @@ class FareVariantCrudRequest extends FormRequest
             "araival_point_id" => "required",
             "departure_at" => "required",
             "araival_at" => "required",
-            "travel_date" => "required",
         ];
     }
 }
