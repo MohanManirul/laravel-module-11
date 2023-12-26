@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bus_seats', function (Blueprint $table) {
+        Schema::create('trips', function (Blueprint $table) {
             $table->id();
+            $table->date('journey_date')->required();
             $table->foreignId('bus_id')->constrained('buses');
-            $table->foreignId('seat_id')->constrained('seats');
-            $table->string('seat_number');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bus_seats');
+        Schema::dropIfExists('trips');
     }
 };

@@ -165,12 +165,12 @@
                                                         <div  class="col-md-2 col-12 mb-2 form-group ">
                                                             <div class="form-check form-switch form-switch-right form-switch-md float-end">
                                                                
-                                                                <span class="float-end">{{ $available_all_seat->seat_number }}</span>
+                                                                <label for="seat_number">{{ $available_all_seat->seat_numbers->seat_number }}</label>
                                                                 <input class="form-check-input me-2" type="checkbox" name="seat_number[]" id="seat_number" value="{{ $available_all_seat->id }}" checked> 
-                                                                @php  
+                                                                {{-- @php  
                                                                   $seat_name =  App\Models\Seat::select('seat_number')->where('id' , $available_all_seat->seat_id)->first();
                                                                   @endphp
-                                                                  <p>{{ $seat_name->seat_number }}</p>
+                                                                  <p>{{ $seat_name->seat_number }}</p> --}}
                                                             </div>                                                       
                                                         </div>
                                                        

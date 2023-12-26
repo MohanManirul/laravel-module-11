@@ -18,6 +18,7 @@ class BusCrudService{
     $bus = Bus::create([
             'jurney_date'               => $bus_data['bus_data']['jurney_date'],
             'name'                      => $bus_data['bus_data']['name'],
+            'bus_route_id'              => $bus_data['bus_data']['bus_route_id'],
             'image'                     => $img,
             'starting_point_id'         => $bus_data['bus_data']['starting_point_id'],
             'end_point_id'              => $bus_data['bus_data']['end_point_id'],       
@@ -34,6 +35,7 @@ class BusCrudService{
             BusSeat::create([
                 'bus_id' => $bus->id,
                 'seat_id' => $single_seat_number,
+                // 'seat_number' => $seat_number,
             ]);
    
     }
@@ -60,6 +62,7 @@ class BusCrudService{
         ->update([
             'jurney_date'               => $bus_data['bus_data']['jurney_date'],
             'name'                      => $bus_data['bus_data']['name'],
+            'bus_route_id'              => $bus_data['bus_data']['bus_route_id'],
             'image'                     => $img,
             'starting_point_id'         => $bus_data['bus_data']['starting_point_id'],
             'end_point_id'              => $bus_data['bus_data']['end_point_id'],       

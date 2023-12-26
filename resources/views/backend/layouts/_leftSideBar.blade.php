@@ -201,6 +201,33 @@
                         </li> 
                         {{-- buses routes sends --}} 
 
+                        {{-- buses trip routes starts --}}
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarDashboardsBusTrip" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Bus Trip Module</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarDashboardsBusTrip">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item"> 
+                                        <a href="{{ route('bus.trip.all') }}" 
+                                        @if(  Route::currentRouteName() == 'bus.trip.all' )
+                                            class="nav-link active"
+                                        @else
+                                            class="nav-link"
+                                        @endif data-key="t-analytics">All Trip </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('bus.trip.create.page') }}" @if(  Route::currentRouteName() == 'bus.trip.create.page' )
+                                        class="nav-link active"
+                                    @else
+                                        class="nav-link"
+                                    @endif data-key="t-crm">Create Trip </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
+                        {{-- buses trip routes sends --}} 
+
                         {{-- reservation routes starts --}}
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboardsBusSeatReservation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">

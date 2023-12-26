@@ -4,7 +4,7 @@
 @endsection
 
 @section('per_page_title')
-    {{ __('Super Admin Dashboard | All Buses') }}
+    {{ __('Super Admin Dashboard | All Bus Trips') }}
 @endsection
 
 @push('per_page_css')
@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title mb-0">All Buses</h4>
+                            <h4 class="card-title mb-0">All Bus Trips</h4>
                         </div><!-- end card header -->
                         
                         <div class="card-body">
@@ -26,7 +26,7 @@
                                 <div class="row g-4 mb-3">
                                     <div class="col-sm-auto">
                                         <div>
-                                            <button type="button" class="btn btn-success add-btn" id="create-btn" ><i class="ri-add-line align-bottom me-1"></i><a href="{{ route('buses.create.page') }}"><span style="color:#fff">Add</span> </a></button>
+                                            <button type="button" class="btn btn-success add-btn" id="create-btn" ><i class="ri-add-line align-bottom me-1"></i><a href="{{ route('bus.trip.create.page') }}"><span style="color:#fff">Add Trip</span> </a></button>
                                             <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                                         </div>
                                     </div>
@@ -53,18 +53,13 @@
                                                 </th>
                                                 <th class="sort" data-sort="customer_name">Sl</th>
                                                 <th class="sort" data-sort="name">Journey Date</th>
-                                                <th class="sort" data-sort="name">Name</th>
-                                                <th class="sort" data-sort="name">Image</th>
-                                                <th class="sort" data-sort="name">Start From</th>
-                                                <th class="sort" data-sort="name">Last Stop</th>
-                                                <th class="sort" data-sort="name">Total Seats</th> 
-                                                <th class="sort" data-sort="name">Bus Type</th> 
-                                                <th class="sort" data-sort="name">Stopage</th>
+                                                <th class="sort" data-sort="name">Bus Name</th>
+                                                <th class="sort" data-sort="name">Status</th>
                                                 <th class="sort" data-sort="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="dynamic-row" class="list form-check-all">
-                                            @foreach ($all_buses as $key=>$single_buse)                                                
+                                            @foreach ($all_trips as $key=>$single_trip)                                                
                                                 <tr>
                                                     <th scope="row">
                                                         <div class="form-check">
@@ -74,28 +69,24 @@
                                                     
                                                     <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
                                                     <td class="customer_name">{{ $key+1 }}</td>
-                                                    <td class="email">{{ $single_buse->jurney_date }}</td>                                                    
-                                                    <td class="email">{{ $single_buse->name }}</td>                                                    
-                                                    <td class="phone"><img style="width: 50px;height:auto" src="{{ asset('images/buses/' . $single_buse->image) }}" alt="Image"></td>                                                   
+                                                    <td class="email">{{ $single_trip->journey_date }}</td>                                                 
                                                     <td class="email">
-                                                        @foreach ($single_buse->start as $start_point)
-                                                            {{ $start_point->name }}
-                                                        @endforeach
-                                                    </td>                                                    
+                                                        @foreach ($single_trip->buses as $key =>$bus_nam)  
+                                                            {{ $bus_nam->name }}  ({{ $bus_nam->bus_type }})
+                                                        @endforeach 
+                                                    </td>                                                  
                                                     <td class="email">
-                                                        @foreach ($single_buse->end as $end_point)
-                                                            {{ $end_point->name }}
-                                                        @endforeach</td>                                                
-                                                    <td class="email">{{ $single_buse->seats }}</td>                                                    
-                                                    <td class="email">{{ $single_buse->bus_type }}</td>                                                  
-                                                    <td class="email">{{ $single_buse->stopage }}</td>                                                    
+                                                    @if ($single_trip->is_active = true)
+                                                        <span style="color: green">Active</span>
+                                                        @else 
+                                                        <span style="color: red">In-Active</span>
+                                                    @endif
+                                                    </td>                                                  
+                                                                                                    
                                                     <td>
                                                         <div class="d-flex gap-2">
                                                             <div class="edit">
-                                                                <button class="btn btn-sm btn-success edit-item-btn"><a href="{{ route('buses.edit',['id'=>encrypt($single_buse->id)]) }}"><span style="color:#fff">Edit</span></a> </button>
-                                                            </div>
-                                                            <div class="remove"> 
-                                                                <a class="btn btn-sm btn-danger delete_user"  href={{ route('seat.reservations.create.page') }}>Reservation</a> 
+                                                                <button class="btn btn-sm btn-success edit-item-btn"><a href="{{ route('bus.trip.edit',['id'=>encrypt($single_trip->id)]) }}"><span style="color:#fff">Edit</span></a> </button>
                                                             </div>
                                                         </div>
                                                     </td>

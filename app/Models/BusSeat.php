@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BusSeat extends Model
 {
     use HasFactory;
-    protected $fillable  = ['bus_id','seat_id'];
+    protected $fillable  = ['bus_id','seat_id','seat_number'];
 
     public function seat_numbers(){
         return $this->belongsTo(Seat::class,'seat_id','id');

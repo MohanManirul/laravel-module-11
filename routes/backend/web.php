@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\BusController;
 use App\Http\Controllers\Backend\BusRouteController;
 use App\Http\Controllers\Backend\BusSeatController;
+use App\Http\Controllers\Backend\BusTripController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\FareVariantController;
@@ -86,6 +87,14 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
         Route::get('/bus-route-delete/{id}',  'delete')->name('bus.route.delete');
     });
 
+    Route::controller(BusTripController::class)->group(function(){
+        Route::get('/all-bus-tript',  'index')->name('bus.trip.all');
+        Route::get('/bus-trip-create',  'create')->name('bus.trip.create.page');
+        Route::post('/bus-trip-store',  'store')->name('bus.trip.store');
+        Route::get('/bus-trip-edit/{id}',  'edit')->name('bus.trip.edit');
+        Route::post('/bus-trip-update/{id}',  'update')->name('bus.trip.update');
+    });
+
     Route::controller(FareVariantController::class)->group(function(){
         Route::get('/all-fares',  'index')->name('fares.all');
         Route::get('/fares-create',  'create')->name('fares.create.page');
@@ -97,7 +106,7 @@ Route::group(['prefix' => '/superadmindashboard', 'middleware' =>['super_admin']
 
     Route::controller(SeatReservationController::class)->group(function(){
         Route::get('/all-seat-reservations',  'index')->name('seat.reservations.all');
-        Route::get('/seat-reservations-create',  'create')->name('seat.reservations.create.page');
+        Route::get('/seat-reservations-create',  'reservation')->name('seat.reservations.create.page');
         Route::post('/seat-reservations-store',  'store')->name('seat.reservations.store');
         Route::get('/seat-reservations-edit/{id}',  'edit')->name('seat.reservations.edit');
         Route::post('/seat-reservations-update/{id}',  'update')->name('seat.reservations.update');

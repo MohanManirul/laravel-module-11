@@ -60,7 +60,7 @@
                                             <a class="text" href="{{ route('buses.all') }}" class="btn btn-outline-dark waves-effect waves-light float-end">{{ __('All Bus') }}</a>
                                     
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body"> 
 
                                         <form class="ajax-form" action="{{ route('buses.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                                             @csrf
@@ -71,6 +71,17 @@
                                                     <input type="date" name="jurney_date" class="form-control" id="jurney_date" placeholder="{{ __('Jurney Date') }}">                                                        
                                                 </div>                                                    
                                                 <!-- jurney date ends -->
+                                                 <!-- end point start -->
+                                                 <div class="col-md-6 col-12 mb-2 form-group"> 
+                                                    <label for="">{{ __('Bus Route') }}</label><span class="require-span">*</span>
+                                                    <select class="form-select select2 form-control" name="bus_route_id" id="bus_route_id">
+                                                        <option selected disabled >{{ __('Select Bus Route') }}</option>
+                                                        @foreach ($all_routes as $single_bus_routes)                                                            
+                                                            <option value="{{ $single_bus_routes->id }}">{{ $single_bus_routes->route_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>                                     
+                                                <!-- end point ends -->  
                                                 <!-- bus name start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group ">
                                                     <label for="name" class="form-label">{{ __('Bus Name') }}</label><span class="require-span">*</span>

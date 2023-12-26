@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusCrudRequet;
 use App\Models\Bus;
+use App\Models\BusRoute;
 use App\Models\BusSeat;
 use App\Models\Destination;
 use App\Models\Seat;
@@ -36,12 +37,13 @@ class BusController extends Controller
         }
    }
 
-   //create
+   //create 
    public function create(){
     if ( auth('super_admin')->check() ) {
+        $all_routes = BusRoute::select('id','route_name')->latest()->get();
         $all_seats = Seat::select('id','seat_number')->get();
         $destinations = Destination::select('id','name')->orderByDesc('id')->get();
-        return view($this->folderPath.'create',compact('destinations','all_seats'));
+        return view($this->folderPath.'create',compact('destinations','all_seats','all_routes'));
     }else{
         return view('errors.404');
     }
