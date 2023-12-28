@@ -65,7 +65,7 @@
                                         <form class="ajax-form" action="{{ route('buses.update', ['id' => encrypt($single_bus->id)]) }}" method="post" autocomplete="off" enctype="multipart/form-data">
                                             @csrf
 
-                                            <div class="row">
+                                            <div class="row"> 
 
                                                 <!-- jurney date start -->
                                                 <div class="col-md-6 col-12 mb-2 form-group ">
@@ -161,24 +161,23 @@
                                                 <div class="row">
                                                     <label for="seat_number">Seats</label>
                                                      @foreach ($single_bus->bus_seats as $available_all_seat) 
-                                                                                                      
-                                                        <div  class="col-md-2 col-12 mb-2 form-group ">
-                                                            <div class="form-check form-switch form-switch-right form-switch-md float-end">
-                                                               
-                                                                <label for="seat_number">{{ $available_all_seat->seat_numbers->seat_number }}</label>
-                                                                <input class="form-check-input me-2" type="checkbox" name="seat_number[]" id="seat_number" value="{{ $available_all_seat->id }}" checked> 
-                                                                {{-- @php  
-                                                                  $seat_name =  App\Models\Seat::select('seat_number')->where('id' , $available_all_seat->seat_id)->first();
-                                                                  @endphp
-                                                                  <p>{{ $seat_name->seat_number }}</p> --}}
-                                                            </div>                                                       
-                                                        </div>
+                                                     <div class="row mt-4  col-12" style="margin-left: 20px"> 
+                                                        <ul style="display: flex" >
+                                                            <li><span class="seat booked-male">{{ $available_all_seat->seat_numbers->seat_number }}</span></li>                                                            
+                                                        </ul>                                                                                                                                         
+                                                        
+                                                    </div>
                                                        
                                                     @endforeach
                                                  </div> 
                                                 <!-- seat number  ends -->                                                
                                                 
-                                                     
+                                                <!-- service charge start --> 
+                                                 <div class="col-md-6 col-12 mb-2 form-group ">
+                                                    <label for="fare" class="form-label">{{ __('Fare') }}</label>
+                                                    <input type="number" name="fare" class="form-control" value="{{ $single_bus->fare }}" id="fare" placeholder="{{ __('Fare') }}" >                                                        
+                                                </div>                                                    
+                                                <!-- service charge  ends -->
                                                  
                                                 <!-- cancellation policy start --> 
                                                 <div class="col-md-12 col-12 mb-2 form-group ">

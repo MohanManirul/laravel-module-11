@@ -177,7 +177,7 @@ div {
                                                         {{ $start_point_name->name }}</span> </p>
                                                     @endforeach    
                                                 </span> </p>
-                                            </div>
+                                            </div> 
                                             <!-- bus information ends -->
 
                                             <!-- departure time start -->
@@ -192,7 +192,7 @@ div {
                                                 <p>ARRIVAL TIME</p>
                                                 <b class="numeric">7:30 AM</b>                                            
                                             </div>
-                                            <!-- arival time ends -->
+                                            <!-- arival time ends --> 
 
                                             <!-- seat available start -->
                                             <div class="col-md-2 right-vertical-pipe text-center">
@@ -202,18 +202,19 @@ div {
                                             <!-- seat available ends -->
 
                                             <!-- price start -->
-                                            <div class="col-md-1 right-vertical-pipe text-center">
-                                                <b style="font-size: 16px">800 TK</b>                                          
+                                            <div class="col-md-1 right-vertical-pipe text-left">
+                                                <b style="font-size: 16px">{{ $single_available_buses->fare }}Tk
+                                                </b>                                          
                                             </div>
                                             <!-- price ends -->
 
                                             <div class="col-md-2">
-                                                <button type="button" class="btn btn-danger btn-sm background"  data-bs-toggle="collapse" data-bs-target="#seat-details">View Seats</button> <br>
+                                                <button type="button" class="btn btn-danger btn-sm background"  data-bs-toggle="collapse" data-bs-target="#seat-details_{{ $single_available_buses->id }}">View Seats</button> <br>
                                                 <span style="font-size: 12px"> <i style="color: red" >Cancellation Policy</i> </span>                                       
                                             </div>
                                             
                                             <!-- bus details start -->
-                                            <div id="seat-details" class="collapse"> <hr>
+                                            <div id="seat-details_{{ $single_available_buses->id }}" class="collapse"> <hr>
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -246,119 +247,11 @@ div {
                                                             <div class="search_seats__O1_OT">
                                                                 <hr>                                                             
                                                                 <div class="row mt-4  col-12" style="margin-left: 20px"> 
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">A1</span></li>
-                                                                        <li><span class="seat booked-female">A2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">A3</span></li>
-                                                                        <li><span class="seat booked-female">A4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="mt-4 row col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">B1</span></li>
-                                                                        <li><span class="seat booked-female">B2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">B3</span></li>
-                                                                        <li><span class="seat booked-female">B4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row mt-4  col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">C1</span></li>
-                                                                        <li><span class="seat booked-female">C2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">C3</span></li>
-                                                                        <li><span class="seat booked-female">C4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row  mt-4  col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">D1</span></li>
-                                                                        <li><span class="seat booked-female">D2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">D3</span></li>
-                                                                        <li><span class="seat booked-female">D4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row mt-4  col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">E1</span></li>
-                                                                        <li><span class="seat booked-female">E2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">E3</span></li>
-                                                                        <li><span class="seat booked-female">E4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row mt-4 col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">F1</span></li>
-                                                                        <li><span class="seat booked-female">F2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">F3</span></li>
-                                                                        <li><span class="seat booked-female">F4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row mt-4 col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">G1</span></li>
-                                                                        <li><span class="seat booked-female">G2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">G3</span></li>
-                                                                        <li><span class="seat booked-female">G4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row mt-4 col-12" style="margin-left: 20px"> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">H1</span></li>
-                                                                        <li><span class="seat booked-female">H2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">H3</span></li>
-                                                                        <li><span class="seat booked-female">H4</span></li>
-                                                                    </ul>                                                                                                                                            
-                                                                    
-                                                                </div>
-                                                                <div class="row mt-4 col-12" style="margin-left: 20px; "> 
-
-                                                                    <ul style="display: flex" >
-                                                                        <li><span class="seat booked-male">I1</span></li>
-                                                                        <li><span class="seat booked-female">I2</span></li>
-                                                                    </ul>
-                                                                
-                                                                    <ul  style="display: flex">
-                                                                        <li><span class="seat booked-male">I3</span></li>
-                                                                        <li><span class="seat booked-female">I4</span></li>
-                                                                    </ul>                                                                                                                                            
+                                                                    @foreach ($single_available_buses->bus_seats as $key => $seat)
+                                                                        <ul  style="display: flex" >
+                                                                            <li class="seat available">{{ $seat->seat_numbers->seat_number }}</li>
+                                                                        </ul> 
+                                                                    @endforeach                                                                                                                                          
                                                                     
                                                                 </div>
                                                                 
@@ -383,7 +276,7 @@ div {
 
                                                         <!-- dropping point --->
                                                         <label for="">{{ __('Dropping Point') }}</label><span class="require-span">*</span>
-                                                        <select class="form-select  form-control select2" name="starting_point_id" id="starting_point_id">
+                                                        <select class="form-select  form-control select2" name="departure_point_id" id="departure_point_id">
                                                             <option selected disabled >{{ __('Select Dropping Point') }}</option>
                                                             <option   >{{ __('Rajshahi Counter') }} at 12.00pm</option>
                                                             <option   >{{ __('Baneswar Counter') }} at 11.30pm</option>
@@ -467,5 +360,14 @@ div {
         });
     </script>
 
+<script>
+  
+  var listItems = document.querySelectorAll("ul li");
+  listItems.forEach(function(item) {
+  item.onclick = function(e) {
+     alert(this.innerText); // this returns clicked li's value
+  }
+});
+</script>
 
 @endpush

@@ -180,6 +180,13 @@
                                                  </div> 
                                                 <!-- seat number  ends -->
 
+                                                 <!-- service charge start --> 
+                                                 <div class="col-md-6 col-12 mb-2 form-group ">
+                                                    <label for="fare" class="form-label">{{ __('Fare') }}</label>
+                                                    <input type="number" name="fare" class="form-control" id="fare" placeholder="{{ __('Fare') }}" >                                                        
+                                                </div>                                                    
+                                                <!-- service charge  ends -->
+
                                                 <!-- cancellation policy start --> 
                                                
                                                 <div class="col-md-12 col-12 mb-2 form-group ">
@@ -187,6 +194,9 @@
                                                     <textarea name="cancellation_policy" id="cancellation_policy"  class="form-control"></textarea>                                                    
                                                 </div>                                                    
                                                 <!-- cancellation policy  ends -->
+
+                                               
+
 
                                             </div>
                                             <div class="row">

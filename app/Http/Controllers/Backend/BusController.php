@@ -40,11 +40,11 @@ class BusController extends Controller
 
    //create 
    public function create(){
-    if ( auth('super_admin')->check() ) {
+    if ( auth('super_admin')->check() ) { 
         $bus_operators = BusOperator::select('id','name')->get();
         $all_routes = BusRoute::select('id','route_name')->latest()->get();
         $all_seats = Seat::select('id','seat_number')->get();
-        $destinations = Destination::select('id','name')->orderByDesc('id')->get();
+        $destinations = Destination::select('id','name')->orderByDesc('id')->get(); 
         return view($this->folderPath.'create',compact('destinations','all_seats','all_routes','bus_operators'));
     }else{
         return view('errors.404');
@@ -128,6 +128,7 @@ class BusController extends Controller
             'bus_registration_number' => $request->bus_registration_number,
             'service_charge' => $request->service_charge,
             'cancellation_policy' => $request->cancellation_policy,
+            'fare' => $request->fare,
             'stopage' => $request->stopage
         ];
 
@@ -187,6 +188,7 @@ public function update(BusCrudRequet $request,$id){
             'cancellation_policy' => $request->cancellation_policy,
             'stopage' => $request->stopage,
             'old_image' => $bus->image,
+            'fare' => $request->fare,
             'is_active' => $bus->is_active
         ];
 

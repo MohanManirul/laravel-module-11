@@ -9,7 +9,7 @@ class Bus extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['jurney_date','bus_operators_id','bus_route_id','image', 'starting_point_id', 'end_point_id' , 'bus_type', 'bus_number','bus_registration_number', 'service_charge','cancellation_policy' ,'stopage'];
+    protected $fillable = ['jurney_date','bus_operators_id','bus_route_id','image', 'starting_point_id', 'end_point_id' , 'bus_type', 'bus_number','bus_registration_number', 'service_charge','cancellation_policy' ,'stopage','fare'];
     public function start()
     {
         return $this->hasMany(Destination::class, 'id', 'starting_point_id');
@@ -29,7 +29,7 @@ class Bus extends Model
     public function bus_operators(){
         return $this->belongsTo(BusOperator::class);
     }
-   
+
  
 
 }

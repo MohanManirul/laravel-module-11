@@ -27,6 +27,7 @@ class BusCrudService{
             'bus_registration_number'   => $bus_data['bus_data']['bus_registration_number'],
             'service_charge'            => $bus_data['bus_data']['service_charge'],
             'cancellation_policy'       => strip_tags($bus_data['bus_data']['cancellation_policy']),
+            'fare'                      => $bus_data['bus_data']['fare'],
             'stopage'                   => $bus_data['bus_data']['stopage'],
             
         ]);
@@ -72,7 +73,8 @@ class BusCrudService{
             'service_charge'            => $bus_data['bus_data']['service_charge'],
             'cancellation_policy'       => strip_tags($bus_data['bus_data']['cancellation_policy']),
             'stopage'                   => $bus_data['bus_data']['stopage'],
-            'is_active'                   => $bus_data['bus_data']['is_active'],
+            'fare'                      => $bus_data['bus_data']['fare'],
+            'is_active'                 => $bus_data['bus_data']['is_active'],
           ]);
 
           foreach($bus_data['seat_data'] as $single_seat_number){
