@@ -165,7 +165,7 @@ div {
                                             <!-- bus information start -->
                                             <div class="col-md-3 right-vertical-pipe">
 
-                                                <p> <strong>{{ $single_available_buses->bus_operators->name }}</strong> </p>
+                                                <p > <strong>{{ $single_available_buses->bus_operators->name }}</strong> <input type="text" id="bus_id" name="bus_id" value=" {{ $single_available_buses->id }}"></p>
                                                 <p>Route {{ $single_available_buses->bus_route_id }}</p>
                                                 <p>PAT <span class="red"><strong>{{ $single_available_buses->bus_type }}</strong> </span> </p>
                                                 <p>Starting Point: <span class="red">
@@ -249,7 +249,7 @@ div {
                                                                 <div class="row mt-4  col-12" style="margin-left: 20px"> 
                                                                     @foreach ($single_available_buses->bus_seats as $key => $seat)
                                                                         <ul  style="display: flex" >
-                                                                            <li class="seat available">{{ $seat->seat_numbers->seat_number }}</li>
+                                                                            <li id="seat_number" class="seat available">{{ $seat->seat_numbers->seat_number }}</li>
                                                                         </ul> 
                                                                     @endforeach                                                                                                                                          
                                                                     
@@ -361,10 +361,22 @@ div {
     </script>
 
 <script>
+    $("#seat_number").on('click',function(){
+       
+        var total_price = inputQuantity * unitPrice ;
+        $('#total_price').val(total_price);           
+            
+    });
+</script>
+
+<script>
   
   var listItems = document.querySelectorAll("ul li");
+  
   listItems.forEach(function(item) {
-  item.onclick = function(e) {
+  item.onclick = function(e) {   
+    const bus_id = $("#bus_id").val(); 
+    alert(bus_id);
      alert(this.innerText); // this returns clicked li's value
   }
 });
