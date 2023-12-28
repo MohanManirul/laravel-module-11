@@ -368,7 +368,7 @@ div {
     item.onclick = function(e) {   
       const bus_id = $("#bus_id").val(); 
       let seat_id =  $(this).data("id") 
-        alert(seat_id);  
+        // alert(seat_id);  
         $.ajax({
             type: "GET",
             url: "{{ route('attempt.to.get.seat') }}",

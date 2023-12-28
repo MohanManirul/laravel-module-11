@@ -26,22 +26,22 @@ class TicketQueryPageController extends Controller
     }
 
     public function attemptToGetSeat(Request $request){
-        return $request->seat_id;
+      
+        $today = date("Y-m-d");
         try{
             $reservation = new SeatReservation();
             $reservation->bus_id = $request->bus_id;
-            return $reservation->seat_id = $request->seat_id;
-            $reservation->reserved_user_type = $request->reserved_user_type ?? ' ';
-            $reservation->reserved_by_id = $request->reserved_by_id ?? ' ';
-            $reservation->reserved_date = $request->reserved_date;
-            $reservation->created_by = $request->created_by ?? ' ';
-            $reservation->payment_status = $request->payment_status;
-            $reservation->is_booked = $request->is_booked;
-            $reservation->is_sold = $request->is_sold;
-            $reservation->seat_status = $request->seat_status;
-            $reservation->save(); 
-            $back = back();
-            return response()->json(['redirect' => $back , 'redirectMessage' => 'Seat Reserved Successfully , pay for complteion'],200);               
+            $reservation->seat_id = $request->seat_id;
+            $reservation->reserved_user_type = $request->reserved_user_type;
+            $reservation->reserved_by_id = $request->reserved_by_id;
+            $reservation->reserved_date = $today; 
+            $reservation->payment_status = $request->payment_status ?? 'unpaid'; 
+            $reservation->is_booked = $request->is_booked ?? 'blocked';
+            $reservation->is_sold = $request->is_sold ?? '0';
+            $reservation->seat_status = $request->seat_status ?? 'available';
+            if ($reservation->save()) {
+                return response()->json(['success' => 'New Seat Selected Created.'], 200);
+            }             
         }catch(Exception $e){
 
         }
