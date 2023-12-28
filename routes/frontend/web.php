@@ -10,8 +10,21 @@ use App\Http\Controllers\TicketQueryPageController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/ticket-query', [TicketQueryPageController::class, 'ticketQueryPage'])->name('ticket.query.page');
 Route::get('/bus/search/', [TicketQueryPageController::class, 'availableBus'])->name('available.bus');
+
+Route::controller(TicketQueryPageController::class)->prefix('/ticket-query')->group(function(){
+    Route::get('/',  'ticketQueryPage')->name('ticket.query.page');
+    Route::get('/attempt-to-get-seat',  'attemptToGetSeat')->name('attempt.to.get.seat');
+    Route::get('/attempt-to-get-seat-again',  'attemptToGetSeatAgain')->name('attempt.to.get.seat.again');
+    Route::get('/products-create',  'create')->name('user.products.create.page');
+    Route::post('/products-create',  'store')->name('user.products.store');
+    Route::get('/products-edit/{id}',  'edit')->name('user.products.edit');
+    Route::post('/products-update/{id}',  'update')->name('user.products.update');
+    Route::post('/products-update/{id}',  'update')->name('user.products.update');
+    Route::get('/products-delete/{id}',  'delete')->name('user.products.delete');
+
+});
+
 
 Route::get('/', [HomepageController::class, 'index'])->name('/');
 Route::get('/home', [HomepageController::class, 'home'])->name('home');

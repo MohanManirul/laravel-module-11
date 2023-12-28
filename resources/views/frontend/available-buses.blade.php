@@ -249,8 +249,7 @@ div {
                                                                 <div class="row mt-4  col-12" style="margin-left: 20px"> 
                                                                     @foreach ($single_available_buses->bus_seats as $key => $seat)
                                                                         <ul  style="display: flex" >
-                                                                            <li  class="seat available"> <span >{{  $seat->seat_numbers->seat_number }}</span></li>
-                                                                            <input type="hidden" id="seat_id" name="seat_id" value="{{  $seat->seat_numbers->id }}">                                                                       
+                                                                            <li data-id="{{ $seat->seat_numbers->id  }}" class="seat available"> <span >{{  $seat->seat_numbers->id }}</span></li>                                                                                                                                                
                                                                         </ul> 
                                                                     @endforeach                                                                                                                                          
                                                                     
@@ -363,17 +362,16 @@ div {
 
 <script>
   
-  var listItems = document.querySelectorAll("ul li");
-  
-  listItems.forEach(function(item) {
-  item.onclick = function(e) {   
-    const bus_id = $("#bus_id").val(); 
-    let seat_id = $("#seat_id").val();
-    alert(seat_id);  
-    alert(bus_id);
-    //  alert(this.innerText[0]); // this returns clicked li's value
-  }
-});
-</script>
+    var listItems = document.querySelectorAll("ul li");
+    
+    listItems.forEach(function(item) {
+    item.onclick = function(e) {   
+      const bus_id = $("#bus_id").val(); 
+      let seat_id =  $(this).data("id") 
+        // alert(seat_id);  
+      
+    }
+  });
+  </script>
 
 @endpush
