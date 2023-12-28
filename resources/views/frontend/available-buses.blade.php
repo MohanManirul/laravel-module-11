@@ -249,7 +249,8 @@ div {
                                                                 <div class="row mt-4  col-12" style="margin-left: 20px"> 
                                                                     @foreach ($single_available_buses->bus_seats as $key => $seat)
                                                                         <ul  style="display: flex" >
-                                                                            <li id="seat_number" class="seat available">{{ $seat->seat_numbers->seat_number }}</li>
+                                                                            <li  class="seat available"> <span >{{  $seat->seat_numbers->seat_number }}</span></li>
+                                                                            <input type="hidden" id="seat_id" name="seat_id" value="{{  $seat->seat_numbers->id }}">                                                                       
                                                                         </ul> 
                                                                     @endforeach                                                                                                                                          
                                                                     
@@ -361,23 +362,16 @@ div {
     </script>
 
 <script>
-    $("#seat_number").on('click',function(){
-       
-        var total_price = inputQuantity * unitPrice ;
-        $('#total_price').val(total_price);           
-            
-    });
-</script>
-
-<script>
   
   var listItems = document.querySelectorAll("ul li");
   
   listItems.forEach(function(item) {
   item.onclick = function(e) {   
     const bus_id = $("#bus_id").val(); 
+    let seat_id = $("#seat_id").val();
+    alert(seat_id);  
     alert(bus_id);
-     alert(this.innerText); // this returns clicked li's value
+    //  alert(this.innerText[0]); // this returns clicked li's value
   }
 });
 </script>
