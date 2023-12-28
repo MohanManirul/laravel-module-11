@@ -249,7 +249,7 @@ div {
                                                                 <div class="row mt-4  col-12" style="margin-left: 20px"> 
                                                                     @foreach ($single_available_buses->bus_seats as $key => $seat)
                                                                         <ul  style="display: flex" >
-                                                                            <li data-id="{{ $seat->seat_numbers->id  }}" class="seat available"> <span >{{  $seat->seat_numbers->id }}</span></li>                                                                                                                                                
+                                                                            <li  data-id="{{ $seat->seat_numbers->id  }}" class="seat available"> <span style="color: #ffffff" >{{  $seat->seat_numbers->seat_number }} <span style="color: #ffffff" >{{  $seat->seat_numbers->id }}</span>  </span></li>                                                                                                                                                
                                                                         </ul> 
                                                                     @endforeach                                                                                                                                          
                                                                     
@@ -368,7 +368,15 @@ div {
     item.onclick = function(e) {   
       const bus_id = $("#bus_id").val(); 
       let seat_id =  $(this).data("id") 
-        // alert(seat_id);  
+        alert(seat_id);  
+        $.ajax({
+            type: "GET",
+            url: "{{ route('attempt.to.get.seat') }}",
+            data : {
+                bus_id : bus_id,
+                seat_id : seat_id,
+            }
+        });
       
     }
   });
