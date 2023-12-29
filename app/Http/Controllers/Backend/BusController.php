@@ -158,7 +158,7 @@ class BusController extends Controller
     if ( auth('super_admin')->check() ) {
         $destinations = Destination::select('id','name')->orderByDesc('id')->get();
         $ends = Destination::select('id','name')->orderByDesc('id')->get();  
-         $single_bus = Bus::with('start','end','bus_seats','bus_seats.seat_numbers')->where('id' , decrypt($id))->first();
+        $single_bus = Bus::with('start','end','bus_seats','bus_seats.seat_numbers')->where('id' , decrypt($id))->first();
       return view($this->folderPath.'edit', compact('single_bus','destinations','ends'));
   }else{
     return view('errors.404');

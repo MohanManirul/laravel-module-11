@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('reserved_bus_seats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bus_id')->constrained('bus_seats');
-            $table->foreignId('seat_id')->constrained('bus_seats');
+            $table->foreignId('bus_id')->constrained('bus_seats')->nullable();
+            $table->foreignId('seat_id')->constrained('bus_seats')->nullable();
             $table->enum('reserved_user_type', ['super_admin','user'])->nullable();
             $table->date("reserved_date")->nullable();
             $table->foreignId('reserved_by')->nullable();
-            $table->enum('payment_status', ['paid','unpaid','cancel'])->default('unpaid');
+            $table->enum('payment_status', ['paid','unpaid','cancel'])->default('unpaid')->nullable();
+            $table->string('session_id')->unique();
             $table->timestamps();
         });
     }

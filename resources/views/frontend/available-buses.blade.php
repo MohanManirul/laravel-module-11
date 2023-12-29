@@ -149,7 +149,6 @@ div {
 @section('body-content')
     <div class="page-content">
         <div class="container-fluid">
- 
             <div class="row">
                 <div class="col">
 
@@ -203,8 +202,8 @@ div {
 
                                             <!-- price start -->
                                             <div class="col-md-1 right-vertical-pipe text-left">
-                                                <b style="font-size: 16px">{{ $single_available_buses->fare }}Tk
-                                                </b>                                          
+                                                <b id="fare" style="font-size: 16px">{{ $single_available_buses->fare }}
+                                                </b>  Tk                                        
                                             </div>
                                             <!-- price ends -->
 
@@ -249,7 +248,7 @@ div {
                                                                 <div class="row mt-4  col-12" style="margin-left: 20px"> 
                                                                     @foreach ($single_available_buses->bus_seats as $key => $seat)
                                                                         <ul  style="display: flex" >
-                                                                            <li  data-id="{{ $seat->seat_numbers->id  }}" class="seat available"> <span style="color: #ffffff" >{{  $seat->seat_numbers->seat_number }} <span style="color: #ffffff" >{{  $seat->seat_numbers->id }}</span>  </span></li>                                                                                                                                                
+                                                                            <li  data-id="{{ $seat->seat_numbers->id  }}"  data-seat_number="{{ $seat->seat_numbers->seat_number  }}" class="seat available"> <span style="color: #ffffff" >{{  $seat->seat_numbers->seat_number }} <span style="color: #ffffff" >{{  $seat->seat_numbers->id }}</span>  </span></li>                                                                                                                                                
                                                                         </ul> 
                                                                     @endforeach                                                                                                                                          
                                                                     
@@ -289,6 +288,37 @@ div {
                                                         <!-- bus name start -->                                                    
                                                         <label for="name" class="form-label">{{ __('SEAT INFORMATION:') }}</label><span class="require-span">*</span>
                                                         <div class="card-body " style="border: 1px solid #df0101; border-radius:2px">
+                                                            <div class="table-responsive table-card mt-3 mb-1">
+                                                                @include('inc.messages')
+                                                                <table class="table align-middle table-nowrap" id="customerTable">
+                                                                    <thead class="table-light">
+                                                                        <tr>
+                                                                            <th scope="col" style="width: 50px;">
+                                                                                <div class="form-check">
+                                                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                                                </div>
+                                                                            </th>
+                                                                            <th class="sort" data-sort="customer_name">Sl</th>
+                                                                            <th class="sort" data-sort="email">Title</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="dynamic-row" class="list form-check-all">
+                                                                        @foreach ($mySeats as $key => $mySeat)                                                
+                                                                            <tr>
+                                                                                <th scope="row">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
+                                                                                    </div>
+                                                                                </th>
+                                                                                
+                                                                                <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
+                                                                                <td class="customer_name">{{ $key+1 }}</td>
+                                                                                <td class="email"> {{ $mySeat->seat_numbers->seat_number }}</td>
+                                                                            </tr>
+                                                                        @endforeach
+                                                                    </tbody>
+                                                                </table>                                                                
+                                                            </div>
                                                             <h5>Seat Fare : 0 tk</h5>
                                                             <h5>Service Charge : 0 tk</h5>
                                                         </div>                                                                                              
@@ -368,13 +398,61 @@ div {
     item.onclick = function(e) {   
       const bus_id = $("#bus_id").val(); 
       let seat_id =  $(this).data("id") 
-        // alert(seat_id);  
+      let seat_number =  $(this).data("seat_number") 
+      let fare = document.getElementById("fare").innerText;
+        // alert(fare);  
         $.ajax({
             type: "GET",
             url: "{{ route('attempt.to.get.seat') }}",
             data : {
                 bus_id : bus_id,
                 seat_id : seat_id,
+                seat_number : seat_number,
+                fare : fare,
+            },
+            success : function(response){
+                if (response.success) {
+                    swal("", `${response.success}`, "success");
+                }
+                if (response.warning) {
+                    swal("", `${response.warning}`, "warning");
+                }
+                if (response.exist) {
+                    //swal("", `${response.exist}`, "exist");
+                    Swal.fire({
+                    title: response.exist,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Save',
+                    denyButtonText: `Don't save`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        
+                        $.ajax({
+                            type : "GET",
+                            url : "{{ route('attempt.to.get.seat.again') }}",
+                            data : {patient_id : patient},
+                            success : function(response){
+                                if (response.status_2) {
+                                    Swal.fire('Saved!', '', 'success');
+                                } else {
+                                    Swal.fire('Saved Failed!', '', 'error')
+                                }
+                            }
+                        })
+                        // end
+
+                    } else if (result.isDenied) {
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+                }
+            },
+            error : function(response){
+                if (response.error) {
+                    swal("", `${response.error}`, "error");
+                }
             }
         });
       

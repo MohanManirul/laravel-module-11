@@ -9,4 +9,8 @@ class SeatReservation extends Model
 {
     use HasFactory;
     protected $fillable =['bus_id','seat_id','reserved_user_type','reserved_by_id','reserved_date','payment_status','is_booked','is_sold','seat_status'];
+    public function seat_numbers(){
+        return $this->belongsTo(Seat::class,'seat_id','id');
+    }
+
 }

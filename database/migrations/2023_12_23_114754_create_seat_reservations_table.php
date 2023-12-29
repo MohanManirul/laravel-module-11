@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    
     /**
      * Run the migrations.
      */
@@ -13,16 +14,17 @@ return new class extends Migration
     {
         Schema::create('seat_reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bus_id')->constrained('bus_seats');
-            $table->foreignId('seat_id')->constrained('bus_seats');
+            $table->foreignId('bus_id')->nullable();
+            $table->foreignId('seat_id')->nullable();
+            $table->float('fare')->nullable();
             $table->enum('reserved_user_type', ['super_admin','user'])->nullable();
             $table->foreignId('reserved_by_id')->nullable();
-            $table->date("reserved_date");
-            $table->enum('payment_status', ['paid','unpaid','cancel'])->default('unpaid');
-            $table->boolean('is_booked')->nullable()->default(false);
-            $table->boolean('is_sold')->nullable()->default(false);
-            $table->enum('seat_status', ['blocked','available','selected'])->default('available');
-           
+            $table->date("reserved_date")->nullable();
+            $table->enum('payment_status', ['paid','unpaid','cancel'])->default('unpaid')->nullable();
+            $table->boolean('is_booked')->nullable()->default(false)->nullable();
+            $table->boolean('is_sold')->nullable()->default(false)->nullable();
+            $table->enum('seat_status', ['blocked','available','selected'])->default('available')->nullable();
+            $table->string('session_id');
             $table->timestamps();
         });
     }
